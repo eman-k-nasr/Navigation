@@ -40,8 +40,9 @@ If you want to use Navigation with Android Studio,you must use Android Studio 3.
   
 - #### Add a NavHost to an activity:
   ###### open res->layout->activity_main->code view[add fragment widget inside parent layout]
-  ```
-      <fragment
+
+   ```      
+       <fragment
         android:id="@+id/nav_host"
         android:name="androidx.navigation.fragment.NavHostFragment"
         app:navGraph="@navigation/navigation"
@@ -50,7 +51,47 @@ If you want to use Navigation with Android Studio,you must use Android Studio 3.
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintLeft_toLeftOf="parent"
         app:layout_constraintRight_toRightOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"/>
         
-```        
-        
+   ```  
+
+## How to pass data between destinations through safeArgs?!
+- #### in nav graph click on the destination that receives the argument.
+- #### click on Arguments(+)
+- #### add argument u want determine name , type 
+  <img src=https://user-images.githubusercontent.com/59161258/104103484-08798900-52ab-11eb-82e8-0b16fb07778e.jpg width="600" height="400">    
+  <img src=https://user-images.githubusercontent.com/59161258/104103563-69a15c80-52ab-11eb-85f1-04024cbb3b5a.jpg width="600" height="400">
+#### for code:
+ - #### add dependency
+###### inside build.gradle(project) add this class path 
+```
+   dependencies {
+     classpath "androidx.navigation:navigation-safe-args-gradle-plugin:$nav_version"
+    }
+```
+###### inside build.gradle(module) add safeArgs plugin inside plugins block 
+```
+plugins {
+    id 'androidx.navigation.safeargs'
+} 
+```
+ - #### It's time to build the project [to access generated classes by safeArgs plugin]
+ - #### [Sender] Inside The Sending Fragment add the following code 
+```
+btn.setOnClickListener {
+   val name = nameEt.text.toString()
+   val action = Fragment_ADirections.actionFragmentAToFragmentB(name)
+   it.findNavController().navigate(action)
+}
+```  
+ - #### [Receiver] Inside The Receiving Fragment add the following code
+```
+val args: Fragment_BArgs by navArgs()
+```
+```
+val name = args.name
+nameTv.text = name
+```
+    
+ 
+ 
