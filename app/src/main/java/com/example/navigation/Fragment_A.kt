@@ -6,6 +6,8 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Button
+import android.widget.EditText
+import android.widget.TextView
 import androidx.navigation.findNavController
 
 class Fragment_A : Fragment() {
@@ -16,8 +18,11 @@ class Fragment_A : Fragment() {
         // Inflate the layout for this fragment
         val root = inflater.inflate(R.layout.fragment_a, container, false)
         val btn = root.findViewById<Button>(R.id.nextBtn)
+        val nameEt = root.findViewById<EditText>(R.id.nameEt)
         btn.setOnClickListener {
-            it.findNavController().navigate(R.id.action_fragment_A_to_fragment_B)
+            val name = nameEt.text.toString()
+            val action = Fragment_ADirections.actionFragmentAToFragmentB(name)
+            it.findNavController().navigate(action)
         }
         return root
     }
