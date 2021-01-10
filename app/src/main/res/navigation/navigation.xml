@@ -20,8 +20,8 @@
         android:label="fragment_b"
         tools:layout="@layout/fragment_b" >
         <argument
-            android:name="name"
-            app:argType="string" />
+            android:name="user"
+            app:argType="com.example.navigation.model.User" />
     </fragment>
     <fragment
         android:id="@+id/fragment_C"

@@ -9,6 +9,7 @@ import android.widget.Button
 import android.widget.EditText
 import android.widget.TextView
 import androidx.navigation.findNavController
+import com.example.navigation.model.User
 
 class Fragment_A : Fragment() {
     override fun onCreateView(
@@ -19,9 +20,12 @@ class Fragment_A : Fragment() {
         val root = inflater.inflate(R.layout.fragment_a, container, false)
         val btn = root.findViewById<Button>(R.id.nextBtn)
         val nameEt = root.findViewById<EditText>(R.id.nameEt)
+        val jobEt = root.findViewById<EditText>(R.id.jobEt)
         btn.setOnClickListener {
             val name = nameEt.text.toString()
-            val action = Fragment_ADirections.actionFragmentAToFragmentB(name)
+            val job = jobEt.text.toString()
+            val user = User(name,job)
+            val action = Fragment_ADirections.actionFragmentAToFragmentB(user)
             it.findNavController().navigate(action)
         }
         return root

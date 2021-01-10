@@ -4,4 +4,5 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="nextBtn">Next</string>
     <string name="name">Enter Your name</string>
+    <string name="job">Enter your job</string>
 </resources>
