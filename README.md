@@ -92,6 +92,42 @@ val args: Fragment_BArgs by navArgs()
 val name = args.name
 nameTv.text = name
 ```
-    
+## How to pass data between destinations through safeArgs(Custom Object)?!
+- #### first create your custom object 
+```
+data class User(val name:String,val job:String)
+```
+- #### add this plugin inside build.gradle(module) add safeArgs plugin inside plugins block
+```
+id 'kotlin-android-extensions'
+```
+- #### make the class extends from Parcelable class and add Parcelize annotation 
+```
+@Parcelize
+data class User(val name:String,val job:String): Parcelable
+```
+- #### repeat the same steps as above but when yoy determine the type of argument pick [custom parcelable] as shown 
+<img src=https://user-images.githubusercontent.com/59161258/104126382-df1d3380-5364-11eb-9066-17fae92f50b8.png width="600" height="400"/>
  
+ - #### It's time to build the project 
+ - #### [Sender] Inside The Sending Fragment add the following code 
+ 
+  ```
+   btn.setOnClickListener {
+    val name = nameEt.text.toString()
+    val job = jobEt.text.toString()
+    val user = User(name,job)
+    val action = Fragment_ADirections.actionFragmentAToFragmentB(user)
+    it.findNavController().navigate(action)
+   }
+  ```  
+
+- #### [Receiver] Inside The Receiving Fragment add the following code
+ ```
+   val user = args.user
+   nameTv.text = user.name
+   jobTv.text = user.job
+ ```  
+        
+
  
