@@ -128,6 +128,8 @@ data class User(val name:String,val job:String): Parcelable
    nameTv.text = user.name
    jobTv.text = user.job
  ```  
-        
-
- 
+ ## enable system  back button :
+   ###### you have to add this attribute inside your navigation host fragment in activity_main
+  ```
+    app:defaultNavHost="true"
+  ```
