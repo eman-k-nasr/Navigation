@@ -22,6 +22,9 @@
         <argument
             android:name="user"
             app:argType="com.example.navigation.model.User" />
+        <action
+            android:id="@+id/action_fragment_B_to_fragment_C"
+            app:destination="@id/fragment_C" />
     </fragment>
     <fragment
         android:id="@+id/fragment_C"
