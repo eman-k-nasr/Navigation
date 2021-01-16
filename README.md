@@ -146,3 +146,20 @@ data class User(val name:String,val job:String): Parcelable
    ##### popUpTo explained 
    <img src=https://user-images.githubusercontent.com/59161258/104818486-a2ec4600-5830-11eb-87dd-a09a9346312c.png width="600" height="400">
    
+  ## Apply up button 
+   ##### add this code inside onCreate() in your MainActivity 
+   
+   ```
+   val navController = this.findNavController(R.id.nav_host)
+   NavigationUI.setupActionBarWithNavController(this,navController)
+   ```
+   ##### then in also MainActivity override this method 
+   
+   ```
+   override fun onSupportNavigateUp(): Boolean {
+       val navController = this.findNavController(R.id.nav_host)
+       return navController.navigateUp()
+   }
+   ```
+     
+   
