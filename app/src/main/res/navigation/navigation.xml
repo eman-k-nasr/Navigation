@@ -24,7 +24,8 @@
             app:argType="com.example.navigation.model.User" />
         <action
             android:id="@+id/action_fragment_B_to_fragment_C"
-            app:destination="@id/fragment_C" />
+            app:destination="@id/fragment_C"
+            app:popUpTo="@id/fragment_A" />
     </fragment>
     <fragment
         android:id="@+id/fragment_C"
