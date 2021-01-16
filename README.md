@@ -133,3 +133,16 @@ data class User(val name:String,val job:String): Parcelable
   ```
     app:defaultNavHost="true"
   ```
+ ## change default system back button :
+   ###### as shown below 
+   <img src=https://user-images.githubusercontent.com/59161258/104817984-6c60fc00-582d-11eb-9cad-eb56feaeeaf3.png width="600" height="400">
+   
+   ##### we can simply add this attribute inside action (action_fragment_B_to_fragment_C)
+   
+   ```
+    app:popUpTo="@id/fragment_A"
+   ```
+   
+   ##### popUpTo explained 
+   <img src=https://user-images.githubusercontent.com/59161258/104818486-a2ec4600-5830-11eb-87dd-a09a9346312c.png width="600" height="400">
+   
