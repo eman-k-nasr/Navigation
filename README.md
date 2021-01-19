@@ -161,5 +161,32 @@ data class User(val name:String,val job:String): Parcelable
        return navController.navigateUp()
    }
    ```
+  ## add an option menu to Fragment C 
+   ##### layout work 
+   ###### you have to create a new android resource file of menu type go to [new android res (menu as a type)-> options_menu(file name)]  
+   ###### open the menu file that's created and start adding your items by drag & drop such below 
+   ###### small note :
+   ###### give the item the same id as the fragment it will be navigated to 
+   <img src=https://user-images.githubusercontent.com/59161258/105018474-b7f1f080-5a4d-11eb-94cf-31f274cc3aea.png width="600" height="400">
+   
+   ##### code work
+   ###### to show the options menu in your fragment ,you have to add this line of code inside onCreateView 
+   ```
+   setHasOptionsMenu(true)
+   ```
+   ###### to inflate the menu layout you've just created above override this method in your fragment 
+   ```
+   override fun onCreateOptionsMenu(menu: Menu, inflater: MenuInflater) {
+           super.onCreateOptionsMenu(menu, inflater)
+           inflater.inflate(R.menu.options_menu, menu)
+   }
+   ```
+   ###### to handle items click , you've to override this method in your fragment 
+   ```
+       override fun onOptionsItemSelected(item: MenuItem): Boolean {
+        return NavigationUI.onNavDestinationSelected(item,requireView().findNavController())
+                || super.onOptionsItemSelected(item)
+    }
+   ```        
      
    
