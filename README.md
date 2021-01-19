@@ -187,6 +187,52 @@ data class User(val name:String,val job:String): Parcelable
         return NavigationUI.onNavDestinationSelected(item,requireView().findNavController())
                 || super.onOptionsItemSelected(item)
     }
-   ```        
-     
+   ```   
+  ## add a navigation drawer to the app 
+   ##### Dependency
+   ###### first of all add material design dependency in build.gradle(module level)
+   ```
+   implementation "com.google.android.material:material:$materialVersion"
+   ```
+   ##### layout work 
+   ###### create a menu items that will be displayed in the navigation view as below (nav_drawer_menu.xml)
+   ###### create a header layout for your navigation drawer (nav_header.xml)
+   ###### add the drawer layout as the root view inside (activity_main.xml)
+   
+```
+<androidx.drawerlayout.widget.DrawerLayout>
+    
+    <androidx.constraintlayout.widget.ConstraintLayout
+    ...
+    </androidx.constraintlayout.widget.ConstraintLayout>
+    
+</androidx.drawerlayout.widget.DrawerLayout>
+```
+ ###### it's time to add your navigation view to dialay the menu items you've just created and the header 
+ 
+ ```
+<androidx.drawerlayout.widget.DrawerLayout>
+ 
+    <androidx.constraintlayout.widget.ConstraintLayout
+    ....
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+    <com.google.android.material.navigation.NavigationView
+        android:id="@+id/navView"
+        android:layout_width="wrap_content"
+        android:layout_height="match_parent"
+        android:layout_gravity="start"
+        app:headerLayout="@layout/nav_header"
+        app:menu="@menu/nav_drawer_menu" />
+        
+</androidx.drawerlayout.widget.DrawerLayout>
+```
+   ##### code work
+   ###### add this line inside onCreate in ur MainActivity 
+   ```
+   NavigationUI.setupWithNavController(navView, navController)
+   ```
+ 
+
+        
    
