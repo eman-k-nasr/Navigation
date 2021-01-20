@@ -232,6 +232,22 @@ data class User(val name:String,val job:String): Parcelable
    ```
    NavigationUI.setupWithNavController(navView, navController)
    ```
+  ## open an external activity (using implicit intent)
+  ###### prepare your intent 
+  ```
+      private fun getShareIntent() : Intent {
+        val shareIntent = Intent(Intent.ACTION_SEND)
+        shareIntent.setType("text/plain")
+            .putExtra(Intent.EXTRA_TEXT, "message")
+        return shareIntent
+    }
+   ```
+  ###### when user clicks 
+  ```
+  startActivity(getShareIntent())
+  ```
+   
+   
  
 
         
